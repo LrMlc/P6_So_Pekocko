@@ -7,7 +7,7 @@ const User = require('../models/User');
 /* fonction asynchrone pour l'enregistrement de nouveaux utilisateurs*/
 // SING UP
 exports.signup = (req, res, next) => {
-    if (req.body.passeword < 8) {
+    if (passeword.lenght < 8) {
         return res.status(400).json({ message: "Votre mot de passe doit contenir plus de 8 caractères ! " })
     } else {
         bcrypt.hash(req.body.password, 10) // hasahge du mot de passe, l'algorithme s'execute 10 pour crypter le mot de passe
