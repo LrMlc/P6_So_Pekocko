@@ -8,20 +8,21 @@ const User = require('../models/User');
 // SING UP
 exports.signup = (req, res, next) => {
     if (req.body.passeword < 8) {
-        return res.status(400).json({ message: "Votre mot de passe doit contenir plus de 8 caractères ! "})
+        return res.status(400).json({ message: "Votre mot de passe doit contenir plus de 8 caractères ! " })
+    } else {
+        bcrypt.hash(req.body.password, 10) // hasahge du mot de passe, l'algorithme s'execute 10 pour crypter le mot de passe
+            .then(hash => { // récupération du hash du mot de passe
+                const user = new User({ // création d'un nouvelle utilisateur
+                    email: req.body.email, // enregistrement de l'email dans le paramètre email
+                    password: hash // enregistrement du hash dans le paramètre password
+                });
+                user.save() // la méthode save enregistre l'utilisateur dans la base de donnée
+                    .then(() => res.status(201).json({ message: ' Utilisateur créé !' }))/* création de ressourse*/
+                    .catch(error => res.status(400).json({ message: ' Cette adresse mail est déjà attribuée ! ' }));
+            })
+            .catch(error => res.status(500).json({ error }));/* erreur server*/
+        } 
     };
-    bcrypt.hash(req.body.password, 10) // hasahge du mot de passe, l'algorithme s'execute 10 pour crypter le mot de passe
-        .then(hash => { // récupération du hash du mot de passe
-            const user = new User({ // création d'un nouvelle utilisateur
-                email: req.body.email, // enregistrement de l'email dans le paramètre email
-                password: hash // enregistrement du hash dans le paramètre password
-            });
-            user.save() // la méthode save enregistre l'utilisateur dans la base de donnée
-                .then(() => res.status(201).json({ message: ' Utilisateur créé !' }))/* création de ressourse*/
-                .catch(error => res.status(400).json({ message: ' Cette adresse mail est déjà attribuée ! ' }));
-        })
-        .catch(error => res.status(500).json({ error }));/* erreur server*/
-};
 
 
 /*fonction pour connecter les utilisateurs existants de se connecter à l'application*/
