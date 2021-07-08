@@ -77,7 +77,7 @@ module.exports.getAllSauces = (req, res, next) => {
 module.exports.likeDislike = (req, res, next) => {
     const like = req.body.like;
     const userId = req.body.userId;
-    
+
     if (like === 0) { // si l'utilisateur veut un statut neutre
         Sauce.findOne({ _id: req.params.id }) // récupération de la sauce qui nous intéresse
             .then((sauce) => {
@@ -137,5 +137,5 @@ module.exports.likeDislike = (req, res, next) => {
             .catch((error) => res.status(400).json({ error }));
     };
 
-   
+
 }
