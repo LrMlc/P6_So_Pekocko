@@ -77,32 +77,7 @@ module.exports.getAllSauces = (req, res, next) => {
 module.exports.likeDislike = (req, res, next) => {
     const like = req.body.like;
     const userId = req.body.userId;
-
-
-    if (like === 1) { // si l'utilisateur veut le statut like
-        Sauce.updateOne( // modification
-            { _id: req.params.id },
-            {
-                $push: { usersLiked: userId }, // ajout de l'userID
-                $inc: { likes: 1 }, // on ajout le like
-            }
-        )
-            .then(() => res.status(200).json({ message: ' Like validé ! ' }))
-            .catch((error) => res.status(400).json({ error }))
-    };
-
-    if (like === -1) { // si l'utilisateur veut le statut dislike
-        Sauce.updateOne( // modification
-            { _id: req.params.id },
-            {
-                $push: { userDisliked: userId }, // on ajoute l'userId
-                $inc: { dislikes: 1 }, // on ajoute le dislike
-            }
-        )
-            .then(() => res.status(200).json({ message: ' Dislike validé ! ' }))
-            .catch((error) => res.status(400).json({ error }));
-    };
-
+    
     if (like === 0) { // si l'utilisateur veut un statut neutre
         Sauce.findOne({ _id: req.params.id }) // récupération de la sauce qui nous intéresse
             .then((sauce) => {
@@ -137,4 +112,30 @@ module.exports.likeDislike = (req, res, next) => {
             )
             .catch((error) => res.status(404).json({ error }))
     };
+
+    if (like === 1) { // si l'utilisateur veut le statut like
+        Sauce.updateOne( // modification
+            { _id: req.params.id },
+            {
+                $push: { usersLiked: userId }, // ajout de l'userID
+                $inc: { likes: 1 }, // on ajout le like
+            }
+        )
+            .then(() => res.status(200).json({ message: ' Like validé ! ' }))
+            .catch((error) => res.status(400).json({ error }))
+    };
+
+    if (like === -1) { // si l'utilisateur veut le statut dislike
+        Sauce.updateOne( // modification
+            { _id: req.params.id },
+            {
+                $push: { userDisliked: userId }, // on ajoute l'userId
+                $inc: { dislikes: 1 }, // on ajoute le dislike
+            }
+        )
+            .then(() => res.status(200).json({ message: ' Dislike validé ! ' }))
+            .catch((error) => res.status(400).json({ error }));
+    };
+
+   
 }
