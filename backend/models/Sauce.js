@@ -17,4 +17,4 @@ const sauceSchema = mongoose.Schema({
 });
 
 /* pour l'exploiter comme model*/
-module.exports = mongoose.model('thing', sauceSchema);
+module.exports = mongoose.model('sauce', sauceSchema);

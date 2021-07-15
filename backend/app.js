@@ -1,6 +1,7 @@
 // IMPORTATIONS
 const express = require('express');// on importe express
 const app = express(); // création de l'application express
+require ("dotenv").config(); 
 const mongoose = require('mongoose');//création application express
 const path = require('path');/* importation de node qui donne accès au chemin de notre système de fichier */
 const helmet = require('helmet'); /* técupération du middleware Helmet qui sécurise les appli Express en définissant divers en-têtes HTTP
@@ -12,7 +13,7 @@ const userRoutes = require('./routes/user'); // récupération des routes user
 
 // MONGOOSE
 /* importation de mongoose dans le fichier*/
-mongoose.connect('mongodb+srv://userone:mongopassuserone@cluster0.v26iv.mongodb.net/myfirstdatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://'+process.env.db_user+':'+process.env.db_pass+'@cluster0.v26iv.mongodb.net/myfirstdatabase?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

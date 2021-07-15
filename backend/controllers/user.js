@@ -6,12 +6,13 @@ const User = require('../models/User');
 // LOGIQUE METIER
 /* fonction asynchrone pour l'enregistrement de nouveaux utilisateurs*/
 // SING UP
-exports.signup = (req, res, next) => {
+exports.signup = (req, res, next) => { 
     if (req.body.password.length < 8){
         return res.status(400).json({ message: "Votre mot de passe doit contenir au moins 8 caractères ! " })
     } else {
         bcrypt.hash(req.body.password, 10) // hasahge du mot de passe, l'algorithme s'execute 10 pour crypter le mot de passe
             .then(hash => { // récupération du hash du mot de passe
+                
                 const user = new User({ // création d'un nouvelle utilisateur
                     email: req.body.email, // enregistrement de l'email dans le paramètre email
                     password: hash // enregistrement du hash dans le paramètre password
@@ -23,8 +24,7 @@ exports.signup = (req, res, next) => {
             .catch(error => res.status(500).json({ error }));/* erreur server*/
         } 
     };
-
-
+    
 /*fonction pour connecter les utilisateurs existants de se connecter à l'application*/
 // LOGIN
 exports.login = (req, res, next) => {
@@ -42,7 +42,7 @@ exports.login = (req, res, next) => {
                         userId: user._id, // l'identifiant
                         token: jwt.sign( /* le token avec 3 arguments: les données que l'on veut encoder, la clé secrète pour l'encodage, la configuration (ici expiration)*/
                             { userId: user._id },
-                            'RANDOM_TOKEN_SECRET',
+                            process.env.jwt_secret,
                             { expiresIn: '24h' }
                         )
                     });
