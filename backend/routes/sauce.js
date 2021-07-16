@@ -1,5 +1,5 @@
 /* logique de routing, permet de voir quelles sont les routes disponibles dans notre application,
-par le nom des fonction on voit ce que fons les routes*/
+par le nom des fonction on voit ce que font les routes*/
 
 const express = require('express');// importation d'express
 const router = express.Router();// création d'un routeur avec la méthode express

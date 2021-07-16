@@ -129,7 +129,7 @@ module.exports.likeDislike = (req, res, next) => {
                     .then(() => res.status(200).json({ message: ' Dislike validé ! ' }))
                     .catch((error) => res.status(400).json({ error }));
             }
-            else{
+            else{ //si l'utilisateur retire son like ou dislike
                 res.status(200).json({ message: ' Vous êtes neutre ! '})
             }
         })
