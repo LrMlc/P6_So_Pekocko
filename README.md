@@ -46,7 +46,7 @@ Pour plus de sécurité et dans le but de protéger votre base de données, vous
 *  db_pass=monmotdepasse  
 *  jwt_secret=minusmajusc123
 
-Attention! Le json web token secret (jwt), doit être un ensemble d'au moins 10/15 caractères de chiffres et lettre aléatoire !    
+Attention! Le json web token secret (jwt), doit être un ensemble d'au moins 10/15 caractères de chiffres et lettres aléatoires !    
 
 Il faut également ajouter le fichier dans la liste des fichiers à ignorer (".gitignore"= afin que votre clé ne se retrouve pas en ligne. A noter que pour accéder à votre variable dans le code, vous devez utiliser la notation "__process.env__." suivie du nom de votre variable.
 
