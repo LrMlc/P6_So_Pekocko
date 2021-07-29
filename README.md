@@ -9,7 +9,8 @@
 Le projet n°6 du parcours Développeur web d'Openclassrooms porte sur le développement d'une application ou les utilisateurs peuvent poster et évaluer des sauces. L'objectif est de permettre à chaque utilisateur d’ajouter leurs sauces préférées mais aussi de liker ou disliker les sauces ajoutées par les autres usagers.
 
 ---------------
-## OUTILS INDISPENSABLES POUR LE PROJET:
+## OUTILS UTILISES POUR LE PROJET:
+
 * Le Framework Express  
 * Node JS  
 * MongoDB 
@@ -18,6 +19,9 @@ Le projet n°6 du parcours Développeur web d'Openclassrooms porte sur le dével
 * GIT/Github 
 * Visual Studio Code
 
+## OUTILS INDISPENSABLE ET A INSTALLER POUR LE PROJET:
+
+* __Node JS__
 ---------------
 ## INSTALLATION DE L'API:
 
@@ -41,6 +45,8 @@ Pour plus de sécurité et dans le but de protéger votre base de données, vous
 * db_user=identifiant  
 *  db_pass=monmotdepasse  
 *  jwt_secret=minusmajusc123
+
+Attention! Le json web token secret (jwt), doit être un ensemble d'au moins 10/15 caractères de chiffres et lettre aléatoire !    
 
 Il faut également ajouter le fichier dans la liste des fichiers à ignorer (".gitignore"= afin que votre clé ne se retrouve pas en ligne. A noter que pour accéder à votre variable dans le code, vous devez utiliser la notation "__process.env__." suivie du nom de votre variable.
 
