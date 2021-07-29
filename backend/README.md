@@ -13,8 +13,7 @@ Le projet n°6 du parcours Développeur web d'Openclassrooms porte sur le dével
 * Le Framework Express  
 * Node JS  
 * MongoDB 
-* Plug-in 
-* Mongoose 
+* Plug-in Mongoose 
 * Javascript 
 * GIT/Github 
 * Visual Studio Code
