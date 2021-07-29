@@ -38,7 +38,7 @@ Il faut exécuter la commande "__ng serve__" ou "__npm start__" via le terminal 
 
 Pour plus de sécurité et dans le but de protéger votre base de données, vous devez créer votre fichier ".env". Vous devez le faire dans le répertoire "Root" de l'application. Stockez votre clé ( nom d'utilisateur, mot de passe et le json web token) dans des variables pour que le framework puisse la lire.
 
-Exemple: - db_user=identifiant  - db_pass=monmotdepasse  - jwt_secret=minusmajusc123
+Exemple: * db_user=identifiant  *  db_pass=monmotdepasse  *  jwt_secret=minusmajusc123
 
 Il faut également ajouter le fichier dans la liste des fichiers à ignorer (".gitignore"= afin que votre clé ne se retrouve pas en ligne. A noter que pour accéder à votre variable dans le code, vous devez utiliser la notation "__process.env__." suivie du nom de votre variable.
 
